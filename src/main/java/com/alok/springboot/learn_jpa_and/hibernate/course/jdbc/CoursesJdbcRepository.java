@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.alok.springboot.learn_jpa_and.hibernate.course.Courses;
+import com.alok.springboot.learn_jpa_and.hibernate.course.Course;
 @Repository
 public class CoursesJdbcRepository {
     @Autowired
@@ -23,7 +23,7 @@ public class CoursesJdbcRepository {
             truncate table courses;
             """;
 
-    public void insert(Courses courses){
+    public void insert(Course courses){
         springJdbcTemplate.update(INSERT_QUERY, courses.getId(), courses.getName(), courses.getAuthor());
     }
 
@@ -31,8 +31,8 @@ public class CoursesJdbcRepository {
         springJdbcTemplate.update(DELETE_QUERY, id);
     }
 
-    public Courses findById(long id){
-       return springJdbcTemplate.queryForObject(SELECT_QUERY,new BeanPropertyRowMapper<>(Courses.class) ,id);
+    public Course findById(long id){
+       return springJdbcTemplate.queryForObject(SELECT_QUERY,new BeanPropertyRowMapper<>(Course.class) ,id);
     }
 
     /**
