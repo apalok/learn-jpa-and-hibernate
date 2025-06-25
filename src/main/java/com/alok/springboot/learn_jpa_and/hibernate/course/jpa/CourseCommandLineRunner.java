@@ -30,6 +30,8 @@ public class CourseCommandLineRunner implements CommandLineRunner{
         repository.save(new Course((long) 3, "learn NodeJs", "Alok"));
         repository.deleteById((long) 1);
         System.out.println(repository.findById((long)3));
+        System.out.println(repository.findAll());
+        System.out.println(repository.findByAuthor("Alok"));
     }
     
 
